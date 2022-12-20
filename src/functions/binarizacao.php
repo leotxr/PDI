@@ -3,7 +3,7 @@ require_once 'funcoes.php';
 
 $img = $_FILES['image']['tmp_name'];
 
-$im = imagecreatefromjpeg($img);
+$im = imagecreatefrombmp($img);
 $largura = imagesx($im);
 $altura = imagesy($im);
 
@@ -14,13 +14,13 @@ function filtro_binario($im, $largura, $altura)
   for ($x = 0; $x < $largura; $x++) {
     for ($y = 0; $y < $altura; $y++) {
       $rgb = imagecolorat($im, $x, $y);
-      $r = ($rgb >> 16) & 0xFF;
-      $g = ($rgb >> 8) & 0xFF;
-      $b = $rgb & 0xFF;
+      #$r = ($rgb >> 16) & 0xFF;
+      #$g = ($rgb >> 8) & 0xFF;
+      #$b = $rgb & 0xFF;
 
-      $nc = rgb_2_nc($r, $g, $b);
+      #$nc = rgb_2_nc($r, $g, $b);
 
-      if($nc < 256/2)
+      if($rgb < 256/2)
         $bin = 0;
       else
         $bin = 255;
@@ -33,7 +33,7 @@ function filtro_binario($im, $largura, $altura)
 
 
 if (filtro_binario($im, $largura, $altura)) {
-  header('Content-Type: image/jpg');
+  header('Content-Type: image/bmp');
 
   imagejpeg($im);
   imagedestroy($im);
