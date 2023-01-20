@@ -7,14 +7,14 @@
                 </svg>
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Negativo</a></li>
+                <li><a>Filtros</a></li>
                 <li><a>Portfolio</a></li>
                 <li><a>About</a></li>
             </ul>
         </div>
     </div>
     <div class="navbar-center">
-        <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a class="btn btn-ghost normal-case text-xl">Trabalho Pratico PDI</a>
     </div>
     <div class="navbar-end">
         <button class="btn btn-ghost btn-circle">

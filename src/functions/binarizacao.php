@@ -6,7 +6,13 @@ $im = imagecreatefrombmp($img);
 $largura = imagesx($im);
 $altura = imagesy($im);
 
+$filter = $_POST['filter'];
+if ($filter)
+    echo $filter;
+else
+    echo 'peguei nada';
 
+    /*
 function filtro_binario($im, $largura, $altura)
 {
   for ($x = 0; $x < $largura; $x++) {
@@ -41,3 +47,4 @@ if (filtro_binario($im, $largura, $altura)) {
 } else {
   echo "Nao foi possivel converter";
 }
+*/
