@@ -1,11 +1,12 @@
 <?php
 require_once 'layouts\app.blade.php';
 ?>
+
 <div class="justify-items-center text-center">
   <form id="uploadimg" method="POST" enctype="multipart/form-data">
-    <div class="text-center">
+    <div class="text-center my-5">
 
-      <input type="file" onchange="onFileSelected(event)" accept="image/bmp" id="image" name="image" class="m-20 file-input file-input-bordered file-input-primary w-full max-w-xs" />
+      <input type="file" onchange="onFileSelected(event)" accept="image/bmp" id="image" name="image" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
 
       <select name="filter" id="filter" class="select select-primary w-full max-w-xs">
         <option disabled selected>Selecione um Filtro</option>
@@ -46,15 +47,15 @@ require_once 'layouts\app.blade.php';
 
   </form>
 
-  <div class="flex w-full h-full lg:flex-row content-center bg-base-100">
-    <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+  <div class="flex w-full h-full lg:flex-row content-center bg-base-100 pb-10">
+    <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
       <label for="input">Imagem Original</label>
       <div>
         <img max-w='500px' max-h='500px' id="input" src="">
       </div>
     </div>
-    <div class="divider lg:divider-horizontal">-></div>
-    <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+    <div class="divider lg:divider-horizontal"></div>
+    <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
       <label for="input">Filtro aplicado</label>
       <div>
         <img max-w='500px' max-h='500px' id="output" src="">

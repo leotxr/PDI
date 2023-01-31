@@ -16,11 +16,11 @@ function ativa_filtro($im, $largura, $altura)
                 for ($y = 0; $y < $altura; $y++) {
                     $rgb = imagecolorat($im, $x, $y);
 
-                    $nc = rgb_2_nc($rgb);
+                    //$nc = rgb_2_nc($rgb);
 
-                    $cinza = (256 - 1) - $nc;
+                    $cinza = (256 - 1) - $rgb;
 
-                    //$negativo = imagecolorallocate($im, $cinza, $cinza, $cinza);
+                    $negativo = imagecolorallocate($im, $cinza, $cinza, $cinza);
 
                     imagesetpixel($im, $x, $y, $cinza);
                 }
@@ -35,7 +35,7 @@ function ativa_filtro($im, $largura, $altura)
                     $g = ($rgb >> 8) & 0xFF;
                     $b = $rgb & 0xFF;
 
-                    //$nc = rgb_2_nc($rgb);
+                    //$rgb = rgb_2_nc($rgb);
 
                     if ($rgb < 256 / 2)
                         $bin = 0;
@@ -46,7 +46,29 @@ function ativa_filtro($im, $largura, $altura)
                 }
             }
             break;
-            
+
+        case 3: //espelhamento
+            for ($x = 0; $x < $largura; $x++) {
+                for ($y = 0; $y < $altura; $y++) {
+                    //$rgb = imagecolorat($im, $x, $y);
+                    //$r = log1p(($rgb >> 16) & 0xFF);
+                    //$g = log1p(($rgb >> 8) & 0xFF);
+                    //$b = log1p($rgb & 0xFF);
+
+                    //$nc = rgb_2_nc($rgb, $r, $g, $b);
+
+                    //$log = log1p($rgb);
+                    //echo $log;
+                    //imagecolorallocate($im, $r, $g, $b);
+                    //imagesetpixel($im, $x, $y, $log);
+
+                    //$ref = imagecolorat($im, $y, $y);
+                    //imagesetpixel($im, ($altura - 1) - $y, $x, $ref);
+                    //return imagerotate($im, 270, 0);
+                }
+            }
+            break;
+
 
         default:
             echo 'nada';
