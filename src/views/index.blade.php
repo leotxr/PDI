@@ -14,6 +14,8 @@ require_once 'layouts\app.blade.php';
         <option value="2">Binarizacao</option>
         <option value="3">Log</option>
         <option value="4">Log Invertido</option>
+        <option value="5">Raiz</option>
+        <option value="6">Potencia</option>
       </select>
       <a class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</a>
 

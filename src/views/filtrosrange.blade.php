@@ -1,22 +1,39 @@
 <?php
 require_once 'layouts\app.blade.php';
 ?>
-<!-- action="../functions/rotacoes.php" -->
 
 <div class="justify-items-center text-center">
-  <form id="uploadimg" method="POST" action="../functions/resize.php"  enctype="multipart/form-data">
+  <form id="uploadimg" method="POST" enctype="multipart/form-data">
     <div class="text-center my-5">
 
-      <input type="file" onchange="onFileSelected(event)" accept="image/*" id="image" name="image" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+      <input type="file" onchange="onFileSelected(event)" accept="image/bmp" id="image" name="image" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
 
       <select name="option" id="option" class="select select-primary w-full max-w-xs">
-        <option disabled selected>Selecione a dimensao</option>
-        <option value="1">512 x 512</option>
-        <option value="2">1024 x 1024</option>
-        <option value="3">Dobrar o tamanho</option>
+        <option disabled selected>Selecione um Filtro</option>
+        <option value="1">Expansao</option>
+        <option value="2">Compressao</option>
       </select>
-      <button type="submit" class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</a>
+      <!--<a class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</a>-->
 
+    </div>
+
+    <div class="text-center grid grid-cols-2 gap-4 sm:grid-cols-2 max-w-lg">
+      <label for="const">
+        Constante de inclinacao
+        <input type="range" name="const" id="const" min="1" max="3" value="" class="range range-warning" />
+        <div class="w-full flex justify-between text-xs px-2">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+        </div>
+        <div id="valcons"></div>
+      </label>
+
+      <label for="soma">
+        Variavel de inicio
+        <input type="range" name="soma" id="soma" min="0" max="32" value="" class="range range-warning" />
+        <div id="valsoma"></div>
+      </label>
     </div>
 
     <div class="justify-items-center text-center border">
@@ -54,19 +71,24 @@ require_once 'layouts\app.blade.php';
         <img max-w='500px' max-h='500px' id="input" src="">
       </div>
     </div>
-   
+    <div class="divider lg:divider-horizontal"></div>
+    <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
+      <label for="input">Filtro aplicado</label>
+      <div>
+        <img max-w='500px' max-h='500px' id="output" src="">
+      </div>
+    </div>
   </div>
 </div>
 <script>
-  /*
-  $(document).on('click', '#btn-upload', function(event) {
+  $(document).on('change', '#soma', function(event) {
     event.preventDefault();
     var form = $('#uploadimg')[0];
     var formData = new FormData(form);
     //filter - $("#filter").val();
     // Set header if need any otherwise remove setup part
     $.ajax({
-      url: "../functions/rotacoes.php", // your request url
+      url: "../functions/rangefilters.php", // your request url
       data: formData,
       processData: false,
       contentType: false,
@@ -74,6 +96,7 @@ require_once 'layouts\app.blade.php';
       success: function(data) {
         var img = document.getElementById("output");
         img.setAttribute('src', data);
+
       },
       error: function() {
 
@@ -81,7 +104,6 @@ require_once 'layouts\app.blade.php';
     });
 
   });
-  */
 
 
   function onFileSelected(event) {
@@ -97,5 +119,4 @@ require_once 'layouts\app.blade.php';
 
     reader.readAsDataURL(selectedFile);
   }
-  
 </script>
