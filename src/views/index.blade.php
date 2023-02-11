@@ -75,6 +75,8 @@ require_once 'layouts\app.blade.php';
     $("#input").mousemove(function(event) {
       var relX = event.pageX - $(this).offset().left; //posicao de x
       var relY = event.pageY - $(this).offset().top; //posicao de y
+      relX = Math.ceil(relX);
+      relY = Math.ceil(relY);
       $("#x").text(relX); //imprime na DIV
       $("#y").text(relY); //imprime na DIV
 

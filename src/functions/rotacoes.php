@@ -1,10 +1,11 @@
 <?php
 
 $img = $_FILES['image']['tmp_name'];
-$image = imagecreatefromjpeg($img);
+$image = imagecreatefrombmp($img);
 $largura = imagesx($image);
 $altura = imagesy($image);
 $im = imagecreatetruecolor($altura, $largura);
+imagecolorallocate($im, 255, 255, 255);
 
 function rotacoes($image, $largura, $altura, $im)
 {
@@ -16,6 +17,7 @@ function rotacoes($image, $largura, $altura, $im)
                 for ($y = 0; $y < $altura; $y++) {
 
                     $ref = imagecolorat($image, $x, $y);
+                    #echo "$ref - ";
                     imagesetpixel($im, ($altura - 1) - $y, $x, $ref);
                 }
             }
@@ -27,6 +29,7 @@ function rotacoes($image, $largura, $altura, $im)
                 for ($y = 0; $y < $altura; $y++) {
 
                     $ref = imagecolorat($image, $x, $y);
+                    #echo "$ref - ";
                     imagesetpixel($im, $y, ($altura - 1) - $x, $ref);
                 }
             }
@@ -74,11 +77,11 @@ function rotacoes($image, $largura, $altura, $im)
 
 if (rotacoes($image, $largura, $altura, $im)) {
     ob_start(); //inicia o buffer
-    header('Content-Type: image/jpeg');
-    imagejpeg($im); // gera imagem em jpeg
+    header('Content-Type: image/bmp');
+    imagebmp($im, NULL, false); // gera imagem em jpeg
     imagedestroy($im); //apos gerar a imagem ela eh destruida pois ja esta em buffer
     $i = ob_get_clean(); //limpa o buffer e pega o conteudo
-    echo "data:image/jpeg;base64," . base64_encode($i) . ""; //mostra a imagem
+    echo "<img src='data:image/bmp;base64," . base64_encode($i) . "'>";
 
 } else {
     echo "Nao foi possivel converter";

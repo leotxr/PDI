@@ -63,8 +63,10 @@ if (filtros($largura, $altura, $im)) {
     ob_start(); //inicia o buffer
     header('Content-Type: image/bmp');
     imagebmp($im, NULL, false); // gera imagem em bmp sem compressao
+    imagebmp($im, '../images/imagem.bmp', false); // salva a img
     imagedestroy($im); //apos gerar a imagem ela eh destruida pois ja esta em buffer
     $i = ob_get_clean(); //limpa o buffer e pega o conteudo
+    //echo "<img src='../images/imagem.bmp'>";
     echo "<img src='data:image/bmp;base64," . base64_encode($i) . "'>";
 } else {
     echo "Nao foi possivel converter";

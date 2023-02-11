@@ -1,7 +1,7 @@
 <?php
 
 $img = $_FILES['image']['tmp_name'];
-$image = imagecreatefromjpeg($img);
+$image = imagecreatefrombmp($img);
 $largura = imagesx($image);
 $altura = imagesy($image);
 
@@ -17,7 +17,7 @@ if ($option == '1') {
 
 $rz_altura = $tam / $altura;
 $rz_largura = $tam / $largura;
-$im = imagecreatetruecolor($tam, $tam);
+$im = imagecreate($tam, $tam);
 
 //cria uma copia da imagem no tamanho original
 

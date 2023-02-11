@@ -8,7 +8,7 @@
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a href="../views/index.blade.php">Filtros</a></li>
-                <li><a href="../views/filtrosrange.blade.php">Filtros (Raiz, Potencia)</a></li>
+                <li><a href="../views/filtrosrange.blade.php">Filtros (Expansao, Compressao)</a></li>
                 <li><a href="../views/funcoesrotacao.blade.php">Rotacoes</a></li>
                 <li><a href="../views/funcoesresize.blade.php">Interpolacoes</a></li>
                 <li><a href="../views/sub-adicao.blade.php">Subtracao/Adicao</a></li>

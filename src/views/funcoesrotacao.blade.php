@@ -58,9 +58,9 @@ require_once 'layouts\app.blade.php';
     </div>
     <div class="divider lg:divider-horizontal"></div>
     <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
-      <label for="input">Filtro aplicado</label>
-      <div>
-        <img max-w='500px' max-h='500px' id="output" src="">
+      <label for="output">Filtro aplicado</label>
+      <div id="output">
+        
       </div>
     </div>
   </div>
@@ -81,7 +81,8 @@ require_once 'layouts\app.blade.php';
       type: 'POST',
       success: function(data) {
         var img = document.getElementById("output");
-        img.setAttribute('src', data);
+        //img.setAttribute('src', data);
+        $('#output').html(data);
       },
       error: function() {
 
