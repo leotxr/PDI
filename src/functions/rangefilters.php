@@ -6,7 +6,7 @@ $largura = imagesx($im);
 $altura = imagesy($im);
 
 
-function rotacoes($largura, $altura, $im)
+function filtros($largura, $altura, $im)
 {
     $option = $_POST['option'];
     $const = $_POST['const'];
@@ -20,7 +20,7 @@ function rotacoes($largura, $altura, $im)
 
                     $rgb = imagecolorat($im, $x, $y);
 
-                    $exp = $const * $rgb + $soma;
+                    $exp = ($const * $rgb) + $soma;
 
                     if ($exp > 255) $exp = 255;
 
@@ -40,15 +40,14 @@ function rotacoes($largura, $altura, $im)
 
                     $rgb = imagecolorat($im, $x, $y);
 
-                    $exp = $rgb / $const - $soma;
+                    $comp = ($rgb / $const) - $soma;
 
-                    if ($exp > 255) $exp = 255;
+                    if ($comp > 255) $comp = 255;
 
-                    if ($exp < 0) $exp = 0;
+                    if ($comp < 0) $comp = 0;
 
 
-
-                    imagesetpixel($im, $x, $y, $exp);
+                    imagesetpixel($im, $x, $y, $comp);
                 }
             }
             break;
@@ -60,13 +59,13 @@ function rotacoes($largura, $altura, $im)
 }
 
 
-if (rotacoes($largura, $altura, $im)) {
+if (filtros($largura, $altura, $im)) {
     ob_start(); //inicia o buffer
     header('Content-Type: image/bmp');
-    imagebmp($im); // gera imagem em jpeg
+    imagebmp($im, NULL, false); // gera imagem em bmp sem compressao
     imagedestroy($im); //apos gerar a imagem ela eh destruida pois ja esta em buffer
     $i = ob_get_clean(); //limpa o buffer e pega o conteudo
-    echo "data:image/bmp;base64," . base64_encode($i) . ""; //mostra a imagem
+    echo "<img src='data:image/bmp;base64," . base64_encode($i) . "'>";
 } else {
     echo "Nao foi possivel converter";
 }

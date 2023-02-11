@@ -12,18 +12,20 @@ function ativa_filtro($im, $largura, $altura)
     $filter = $_POST['filter'];
     switch ($filter) {
         case 1: //negativo
-            for ($x = 0; $x < $largura; $x++) {
-                for ($y = 0; $y < $altura; $y++) {
+            for ($x = 0; $x < intval($largura); $x++) {
+                for ($y = 0; $y < intval($altura); $y++) {
                     $rgb = imagecolorat($im, $x, $y);
-
                     //$nc = rgb_2_nc($rgb);
 
                     $cinza = (256 - 1) - $rgb;
 
-                    $negativo = imagecolorallocate($im, $cinza, $cinza, $cinza);
-
+                    //$negativo = imagecolorallocate($im, $cinza, $cinza, $cinza);
+                    //echo "$cinza - ";
+                   
                     imagesetpixel($im, $x, $y, $cinza);
+                    
                 }
+                
             }
             break;
 
@@ -140,12 +142,13 @@ function ativa_filtro($im, $largura, $altura)
 }
 
 if (ativa_filtro($im, $largura, $altura)) {
-    ob_start(); //inicia o buffer
-    header('Content-Type: image/bmp');
-    imagebmp($im); // gera imagem em jpeg
-    imagedestroy($im); //apos gerar a imagem ela eh destruida pois ja esta em buffer
-    $i = ob_get_clean(); //limpa o buffer e pega o conteudo
-    echo "data:image/bmp;base64," . base64_encode($i) . ""; //mostra a imagem
+
+    ob_start();
+    header( "Content-type: image/bmp" );
+    imagebmp( $im, NULL, false); // primeiro argumento imagem, segundo nome p salvar arquivo, terceiro compressao 
+    imagedestroy( $im );
+    $i = ob_get_clean();
+    echo "<img src='data:image/bmp;base64," . base64_encode( $i )."'>";
 
 } else {
     echo "Nao foi possivel converter";

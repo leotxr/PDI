@@ -30,7 +30,7 @@ require_once 'layouts\app.blade.php';
       </label>
 
       <label for="soma">
-        Variavel de inicio
+        Variavel de Soma
         <input type="range" name="soma" id="soma" min="0" max="32" value="" class="range range-warning" />
         <div id="valsoma"></div>
       </label>
@@ -74,8 +74,8 @@ require_once 'layouts\app.blade.php';
     <div class="divider lg:divider-horizontal"></div>
     <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
       <label for="input">Filtro aplicado</label>
-      <div>
-        <img max-w='500px' max-h='500px' id="output" src="">
+      <div id="output">
+        
       </div>
     </div>
   </div>
@@ -85,8 +85,6 @@ require_once 'layouts\app.blade.php';
     event.preventDefault();
     var form = $('#uploadimg')[0];
     var formData = new FormData(form);
-    //filter - $("#filter").val();
-    // Set header if need any otherwise remove setup part
     $.ajax({
       url: "../functions/rangefilters.php", // your request url
       data: formData,
@@ -95,8 +93,7 @@ require_once 'layouts\app.blade.php';
       type: 'POST',
       success: function(data) {
         var img = document.getElementById("output");
-        img.setAttribute('src', data);
-
+        $('#output').html(data);
       },
       error: function() {
 

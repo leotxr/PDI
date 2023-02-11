@@ -9,3 +9,4 @@ function rgb_2_nc($rgb)
 
     return $nc;
 }
+
