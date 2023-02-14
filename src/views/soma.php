@@ -19,7 +19,6 @@ require_once 'layouts\app.php';
         <select name="option" id="option" class="select select-primary w-full max-w-xs">
           <option disabled selected>Selecione um Filtro</option>
           <option value="1">Adição</option>
-          <option value="2">Subtração</option>
         </select>
       </div>
 
@@ -83,7 +82,7 @@ require_once 'layouts\app.php';
     //filter - $("#filter").val();
     // Set header if need any otherwise remove setup part
     $.ajax({
-      url: "../functions/sumsub.php", // your request url
+      url: "../functions/function_soma.php", // your request url
       data: formData,
       processData: false,
       contentType: false,

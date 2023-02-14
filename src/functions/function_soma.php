@@ -45,25 +45,6 @@ function ativa_filtro($im1, $im2, $largura, $altura, $result)
             }
             break;
 
-        case 2: //subtracao
-            for ($x = 0; $x < $largura; $x++) {
-                for ($y = 0; $y < $altura; $y++) {
-
-                    $rgb1 = imagecolorat($im1, $x, $y);
-                    $rgb1 = $rgb1 * $soma1;
-
-                    $rgb2 = imagecolorat($im2, $x, $y);
-                    $rgb2 = $rgb2 * $soma2;
-
-
-                    $rgb = max(0, $rgb1 - $rgb2);
-
-
-                    imagesetpixel($result, $x, $y, $rgb);
-                }
-            }
-            break;
-
 
         default:
             echo 'nada';
