@@ -19,6 +19,7 @@ $rz_altura = $tam / $altura;
 $rz_largura = $tam / $largura;
 $im = imagecreate($tam, $tam);
 
+
 //cria uma copia da imagem no tamanho original
 
 //bilinear

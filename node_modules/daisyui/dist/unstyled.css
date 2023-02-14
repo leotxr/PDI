@@ -775,6 +775,7 @@
     z-index: 1;
     position: absolute;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    white-space: nowrap;
   }
 .input {
     flex-shrink: 1;
@@ -798,6 +799,7 @@
 }
 .input-group > *,
   .input-group > .input,
+  .input-group > .textarea,
   .input-group > .select {
     border-radius: 0px;
 }
@@ -1083,7 +1085,8 @@
     display: inline-flex
 }
   .rating :where(input) {
-    cursor: pointer
+    cursor: pointer;
+    border-radius: 0px
 }
 .select {
   display: inline-flex;
@@ -1256,14 +1259,14 @@
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-duration: 200ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    padding-left: 1rem;
-    padding-right: 1rem;
+    min-height: 3rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    line-height: 2;
-    min-height: 3rem
+    line-height: 2
 }
 .toast {
     position: fixed;
@@ -1283,7 +1286,8 @@
   position: absolute;
   pointer-events: none;
   z-index: 1;
-  content: attr(data-tip);
+  content: var(--tw-content);
+  --tw-content: attr(data-tip);
 }
 .tooltip:before, .tooltip-top:before {
     transform: translateX(-50%);
