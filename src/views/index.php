@@ -21,40 +21,22 @@ require_once 'layouts\app.php';
 
     </div>
 
-    <div id="pdp" class="justify-items-center text-center border grid grid-cols-3">
-      <div id="x"></div>
-      <div id="y"></div>
-      <div id="color"></div>
-    </div>
-
   </form>
 
-  <div class="flex w-full h-full lg:flex-row content-center bg-base-100 pb-10">
-    <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
-      <label for="input">Imagem Original</label>
-      <div>
-        <img max-w='500px' max-h='500px' id="input" name="input" src="">
-      </div>
-    </div>
-    <div class="divider lg:divider-horizontal"></div>
-    <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
-      <label for="input">Filtro aplicado</label>
-      <div id="output">
-        <!--<img max-w='500px' max-h='500px' id="output" src="">-->
-
-      </div>
-    </div>
+  <!-- CARREGA A DIV COM AS IMAGENS DE ENTRADA E SAIDA -->
+  <div class="p-5">
+    <?php include('../../src/views/layouts/images.php') ?>
   </div>
+
 </div>
 <script>
+  // FORMULARIO EH PASSADO VIA AJAX PARA NAO SER NECESSARIO RECARREGAR A PAGINA
   $(document).on('click', '#btn-upload', function(event) {
     event.preventDefault();
     var form = $('#uploadimg')[0];
     var formData = new FormData(form);
-    //filter - $("#filter").val();
-    // Set header if need any otherwise remove setup part
     $.ajax({
-      url: "../functions/filters.php", // your request url
+      url: "../functions/a-c-filters.php",
       data: formData,
       processData: false,
       contentType: false,
@@ -71,21 +53,8 @@ require_once 'layouts\app.php';
 
   });
 
-  $(document).ready(function(e) {
-    $("#input").mousemove(function(event) {
-      var relX = event.pageX - $(this).offset().left; //posicao de x
-      var relY = event.pageY - $(this).offset().top; //posicao de y
-      relX = Math.ceil(relX);
-      relY = Math.ceil(relY);
-      $("#x").text(relX); //imprime na DIV
-      $("#y").text(relY); //imprime na DIV
 
-     
-
-    });
-  });
-
-
+  // FUNCAO PARA MOSTRAR A IMAGEM CARREGADA NA TELA
 
   function onFileSelected(event) {
     var selectedFile = event.target.files[0];

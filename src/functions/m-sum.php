@@ -57,6 +57,7 @@ if (ativa_filtro($im1, $im2, $largura, $altura, $result)) {
     ob_start();
     header("Content-type: image/bmp");
     imagebmp($result, NULL, false); // primeiro argumento imagem, segundo nome p salvar arquivo, terceiro compressao 
+    imagebmp($result, '../images/saida/soma.bmp', false); // salva a img
     imagedestroy($result);
     $i = ob_get_clean();
     echo "<img src='data:image/bmp;base64," . base64_encode($i) . "'>";

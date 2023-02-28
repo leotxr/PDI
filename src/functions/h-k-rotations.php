@@ -4,8 +4,7 @@ $img = $_FILES['image']['tmp_name'];
 $image = imagecreatefrombmp($img);
 $largura = imagesx($image);
 $altura = imagesy($image);
-$im = imagecreatetruecolor($altura, $largura);
-imagecolorallocate($im, 255, 255, 255);
+$im = imagecreatefrombmp($img); // crio uma nova copia da imagem enviada
 
 function rotacoes($image, $largura, $altura, $im)
 {
@@ -78,7 +77,8 @@ function rotacoes($image, $largura, $altura, $im)
 if (rotacoes($image, $largura, $altura, $im)) {
     ob_start(); //inicia o buffer
     header('Content-Type: image/bmp');
-    imagebmp($im, NULL, false); // gera imagem em jpeg
+    imagebmp($im, NULL, false); // gera imagem em bmp
+    imagebmp($im, '../images/saida/rotacao.bmp', false); // salva a img
     imagedestroy($im); //apos gerar a imagem ela eh destruida pois ja esta em buffer
     $i = ob_get_clean(); //limpa o buffer e pega o conteudo
     echo "<img src='data:image/bmp;base64," . base64_encode($i) . "'>";
@@ -86,9 +86,3 @@ if (rotacoes($image, $largura, $altura, $im)) {
 } else {
     echo "Nao foi possivel converter";
 }
-/*
-if (rotacoes($image, $largura, $altura, $im)) {
-    header('Content-Type: image/jpeg');
-    imagejpeg($im); // gera imagem em jpeg
-}
-*/

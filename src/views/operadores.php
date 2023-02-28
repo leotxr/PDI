@@ -1,24 +1,29 @@
 <?php
 require_once 'layouts\app.php';
 ?>
-<!-- action="../functions/rotacoes.php" -->
 
 <div class="justify-items-center text-center">
   <form id="uploadimg" method="POST" enctype="multipart/form-data">
-    <div class="text-center my-5">
+    <div class="text-center my-5 grid grid-cols-3 sm:grid-cols-3">
 
-      <input type="file" onchange="onFileSelected(event)" accept="image/*" id="image" name="image" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+      <div>
+        <input type="file" onchange="onFileSelected(event)" accept="image/bmp" id="image" name="image" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+      </div>
 
-      <select name="option" id="option" class="select select-primary w-full max-w-xs">
-        <option disabled selected>Selecione um Filtro</option>
-        <option value="1">Horario</option>
-        <option value="2">Anti-Horario</option>
-        <option value="3">180</option>
-        <option value="4">Espelhamento Vertical</option>
-        <option value="5">Espelhamento Horizontal</option>
-      </select>
-      <button type="submit" class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</a>
+      <div>
+        <select name="filter" id="filter" class="select select-primary w-full max-w-xs">
+          <option disabled selected>Selecione um Operador</option>
+          <option value="1">Laplaciano</option>
+          <option value="2">Sobel</option>
+          <option value="3">Prewitt</option>
+        </select>
+        <button type="submit" class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</submit>
+      </div>
 
+      <div>
+        <label for="treshold">Treshold</label>
+        <input type="number" min="0" max="255" id="treshold" name="treshold" placeholder="Treshold" class="input input-bordered input-primary w-full max-w-xs" />
+      </div>
     </div>
 
   </form>
@@ -34,15 +39,15 @@ require_once 'layouts\app.php';
     event.preventDefault();
     var form = $('#uploadimg')[0];
     var formData = new FormData(form);
+
     $.ajax({
-      url: "../functions/h-k-rotations.php",
+      url: "../functions/s-v-operators.php", // your request url
       data: formData,
       processData: false,
       contentType: false,
       type: 'POST',
       success: function(data) {
         var img = document.getElementById("output");
-        //img.setAttribute('src', data);
         $('#output').html(data);
       },
       error: function() {

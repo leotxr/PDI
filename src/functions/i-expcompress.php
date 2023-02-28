@@ -20,7 +20,7 @@ function filtros($largura, $altura, $im)
 
                     $rgb = imagecolorat($im, $x, $y);
 
-                    $exp = ($const * $rgb) + $soma;
+                    $exp = $const * $rgb + $soma;
 
                     if ($exp > 255) $exp = 255;
 
@@ -31,6 +31,7 @@ function filtros($largura, $altura, $im)
                     imagesetpixel($im, $x, $y, $exp);
                 }
             }
+            var_dump($exp);
             break;
 
         case 2: //compressao
@@ -63,17 +64,11 @@ if (filtros($largura, $altura, $im)) {
     ob_start(); //inicia o buffer
     header('Content-Type: image/bmp');
     imagebmp($im, NULL, false); // gera imagem em bmp sem compressao
-    imagebmp($im, '../images/imagem.bmp', false); // salva a img
+    imagebmp($im, '../images/saida/imagem.bmp', false); // salva a img
     imagedestroy($im); //apos gerar a imagem ela eh destruida pois ja esta em buffer
     $i = ob_get_clean(); //limpa o buffer e pega o conteudo
-    //echo "<img src='../images/imagem.bmp'>";
     echo "<img src='data:image/bmp;base64," . base64_encode($i) . "'>";
 } else {
     echo "Nao foi possivel converter";
 }
-/*
-if (rotacoes($image, $largura, $altura, $im)) {
-    header('Content-Type: image/jpeg');
-    imagejpeg($im); // gera imagem em jpeg
-}
-*/
+

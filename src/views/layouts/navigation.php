@@ -11,7 +11,8 @@
                 <li><a href="../views/filtrosrange.php">Filtros (Expansao, Compressao)</a></li>
                 <li><a href="../views/funcoesrotacao.php">Rotacoes</a></li>
                 <li><a href="../views/funcoesresize.php">Interpolacoes</a></li>
-                <li><a href="../views/funcoesadcsub.php">Subtracao/Adicao</a></li>
+                <li><a href="../views/soma.php">Soma</a></li>
+                <li><a href="../views/operadores.php">Operadores</a></li>
             </ul>
         </div>
     </div>

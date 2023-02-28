@@ -58,31 +58,19 @@ require_once 'layouts\app.php';
 
   </form>
 
-  <div class="flex w-full h-full lg:flex-row content-center bg-base-100 pb-10">
-    <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
-      <label for="input">Imagem Original</label>
-      <div>
-        <img max-w='500px' max-h='500px' id="input" src="">
-      </div>
-    </div>
-    <div class="divider lg:divider-horizontal"></div>
-    <div class="grid flex-grow h-flex card bg-base-300 rounded-box place-items-center">
-      <label for="output">Filtro aplicado</label>
-      <div id="output">
-
-      </div>
-    </div>
+  <!-- CARREGA A DIV COM AS IMAGENS DE ENTRADA E SAIDA -->
+  <div class="p-5">
+    <?php include('../../src/views/layouts/images.php') ?>
   </div>
+
 </div>
 <script>
   $(document).on('click', '#btn-upload', function(event) {
     event.preventDefault();
     var form = $('#uploadimg')[0];
     var formData = new FormData(form);
-    //filter - $("#filter").val();
-    // Set header if need any otherwise remove setup part
     $.ajax({
-      url: "../functions/function_soma.php", // your request url
+      url: "../functions/m-sum.php",
       data: formData,
       processData: false,
       contentType: false,
