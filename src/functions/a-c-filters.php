@@ -1,10 +1,5 @@
 <?php
-require_once 'funcoes.php';
-
-$img = $_FILES['image']['tmp_name'];
-$im = imagecreatefrombmp($img);
-$largura = imagesx($im);
-$altura = imagesy($im);
+require_once 'upload.php';
 
 
 function ativa_filtro($im, $largura, $altura)

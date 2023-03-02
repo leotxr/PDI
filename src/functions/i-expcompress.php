@@ -1,9 +1,6 @@
 <?php
 
-$img = $_FILES['image']['tmp_name'];
-$im = imagecreatefrombmp($img);
-$largura = imagesx($im);
-$altura = imagesy($im);
+include 'upload.php';
 
 
 function filtros($largura, $altura, $im)

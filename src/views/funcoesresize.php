@@ -4,18 +4,33 @@ require_once 'layouts\app.php';
 <!-- action="../functions/rotacoes.php" -->
 
 <div class="justify-items-center text-center">
-  <form id="uploadimg" method="POST" action="../functions/d-e-resize.php"  enctype="multipart/form-data">
-    <div class="text-center my-5">
+  <form id="uploadimg" method="POST" action="../functions/d-e-resize.php" enctype="multipart/form-data">
+  somente jpeg
+    <div class="grid sm:grid-cols-4 gap-2 m-3">
+      
+      <div class="p-2">
+        <input type="file" onchange="onFileSelected(event)" accept="image/jpeg" id="image" name="image" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+      </div>
 
-      <input type="file" onchange="onFileSelected(event)" accept="image/*" id="image" name="image" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+      <div class="p-2">
+        <select name="filter" id="filter" class="select select-primary w-full max-w-xs">
+          <option disabled selected>Selecione um Filtro</option>
+          <option value="1">Bilinear</option>
+          <option value="2">Vizinho mais proximo</option>
+        </select>
+      </div>
 
-      <select name="option" id="option" class="select select-primary w-full max-w-xs">
-        <option disabled selected>Selecione a dimensao</option>
-        <option value="1">512 x 512</option>
-        <option value="2">1024 x 1024</option>
-        <option value="3">Dobrar o tamanho</option>
-      </select>
-      <button type="submit" class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</a>
+      <div class="p-2">
+        <select name="option" id="option" class="select select-primary w-full max-w-xs">
+          <option disabled selected>Selecione um Tamanho</option>
+          <option value="1">512x512</option>
+          <option value="2">1024x1024</option>
+        </select>
+      </div>
+
+      <div class="m-2">
+        <button type="submit" class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</a>
+      </div>
 
     </div>
 
@@ -30,7 +45,7 @@ require_once 'layouts\app.php';
         <img max-w='500px' max-h='500px' id="input" src="">
       </div>
     </div>
-   
+
   </div>
 </div>
 <script>
@@ -73,5 +88,4 @@ require_once 'layouts\app.php';
 
     reader.readAsDataURL(selectedFile);
   }
-  
 </script>

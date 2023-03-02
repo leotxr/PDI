@@ -7,12 +7,13 @@
                 </svg>
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a href="../views/index.php">Filtros</a></li>
-                <li><a href="../views/filtrosrange.php">Filtros (Expansao, Compressao)</a></li>
-                <li><a href="../views/funcoesrotacao.php">Rotacoes</a></li>
-                <li><a href="../views/funcoesresize.php">Interpolacoes</a></li>
-                <li><a href="../views/soma.php">Soma</a></li>
-                <li><a href="../views/operadores.php">Operadores</a></li>
+                <li><a href="../views/index.php">A-C Filtros</a></li>
+                <li><a href="../views/filtrosrange.php">I-E  Filtros</a></li>
+                <li><a href="../views/funcoesrotacao.php">H-K Rotacoes</a></li>
+                <li><a href="../views/funcoesresize.php">D-E Interpolacoes</a></li>
+                <li><a href="../views/soma.php">M - Soma</a></li>
+                <li><a href="../views/operadores.php">S-V Operadores</a></li>
+                <li><a href="../views/filtros-n-r.php">N-R Filtros</a></li>
             </ul>
         </div>
     </div>

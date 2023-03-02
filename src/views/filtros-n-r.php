@@ -12,6 +12,9 @@ require_once 'layouts\app.php';
         <option disabled selected>Selecione um Filtro</option>
         <option value="1">MAX</option>
         <option value="2">MIN</option>
+        <option value="3">Moda</option>
+        <option value="4">Pseudo Mediana</option>
+        <option value="5">Mediana</option>
       </select>
       <a class="btn btn-outline btn-primary" id="btn-upload" type="button">Aplicar</a>
 
