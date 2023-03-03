@@ -1,5 +1,5 @@
 <?php
-require_once 'layouts\app.php';
+require_once 'layouts/app.php';
 ?>
 
 <div class="justify-items-center text-center">
